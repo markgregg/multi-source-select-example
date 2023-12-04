@@ -8,4 +8,5 @@ export default interface Interest {
   couponTo?: number
   maturityDateFrom?: string
   maturityDateTo?: string
+  freeText?: string
 }

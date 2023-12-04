@@ -192,6 +192,13 @@ const BasicExample: React.FC<BasicExampleProps> = ({ theme }) => {
       resizable: true,
       width: 120,
     },
+    {
+      field: 'freeText',
+      filter: false,
+      sortable: true,
+      resizable: false,
+      width: 300,
+    },
   ])
 
   React.useEffect(() => {
@@ -566,6 +573,9 @@ const BasicExample: React.FC<BasicExampleProps> = ({ theme }) => {
           matcher.source.toLowerCase() === 'coupon' &&
           matcher.comparison === '<',
       )?.value as number
+      const freeText = matchers.find(
+        (matcher) => matcher.source.toLowerCase() === 'free text',
+      )?.text
 
       if (client && side) {
         setInterest({
@@ -578,6 +588,7 @@ const BasicExample: React.FC<BasicExampleProps> = ({ theme }) => {
           maturityDateTo,
           couponFrom,
           couponTo,
+          freeText
         })
       }
     }
@@ -724,19 +735,26 @@ const BasicExample: React.FC<BasicExampleProps> = ({ theme }) => {
                   }
                 />
               </div>
+              <div className="interestGroup">
+                <label className="interestLabel">Free Text:</label>
+                <textarea
+                  style={{ width: 200, height: 60 }}
+                  rows={4}
+                  id="text"
+                  value={interest.freeText}
+                  onChange={(e) =>
+                    setInterest({
+                      ...interest,
+                      freeText: e.currentTarget.value,
+                    })
+                  }
+                />
+              </div>
               <input
                 ref={refAvailable}
                 type="submit"
                 value="Submit"
-                style={{
-                  alignSelf: 'flex-end',
-                  width: 60,
-                  backgroundColor: '#7186e1',
-                  border: '1px darkgray solid',
-                  padding: '5px',
-                  color: 'white',
-                  marginTop: '10px',
-                }}
+                className='intertestButton'
               />
             </form>
           </div>

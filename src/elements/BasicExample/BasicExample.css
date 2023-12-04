@@ -40,7 +40,7 @@
 .interestFormContainer {
   z-index: 50;
   position: absolute;
-  background: #e6f9ff;
+  background: #f1f1f1;
   border: 1px solid black;
   border-radius: 4px;
   padding-bottom: 20px;
@@ -48,11 +48,30 @@
   padding-right: 20px;
 }
 
+.interestFormContainer input textarea {
+  border: 1px darkgray solid;
+}
+
 .interestForm {
   display: flex;
   flex-direction: column;
   row-gap: 5px;
   font-size: small;
+}
+
+.intertestButton {
+  align-self: flex-end;
+  width: 60px;
+  background-color: rgb(205 205 205);
+  border: 1px solid lightgray;
+  padding: 5px;
+  color: black;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.intertestButton:focus {
+  border: 1px solid darkgray;
 }
 
 .interestLabel {
